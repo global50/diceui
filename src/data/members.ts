@@ -1,0 +1,133 @@
+export interface Member {
+  id: string;
+  name: string;
+  email: string;
+  role: string;
+  avatar: string;
+  status: 'active' | 'inactive' | 'pending';
+  joinedDate: string;
+  department: string;
+}
+
+export const mockMembers: Member[] = [
+  {
+    id: '1',
+    name: 'Sarah Chen',
+    email: 'sarah.chen@example.com',
+    role: 'Engineering Manager',
+    avatar: 'https://picsum.photos/seed/sarah/200',
+    status: 'active',
+    joinedDate: '2023-01-15',
+    department: 'Engineering',
+  },
+  {
+    id: '2',
+    name: 'Marcus Rodriguez',
+    email: 'marcus.r@example.com',
+    role: 'Senior Developer',
+    avatar: 'https://picsum.photos/seed/marcus/200',
+    status: 'active',
+    joinedDate: '2023-03-22',
+    department: 'Engineering',
+  },
+  {
+    id: '3',
+    name: 'Aisha Patel',
+    email: 'aisha.patel@example.com',
+    role: 'UX Designer',
+    avatar: 'https://picsum.photos/seed/aisha/200',
+    status: 'active',
+    joinedDate: '2023-02-10',
+    department: 'Design',
+  },
+  {
+    id: '4',
+    name: 'James Wilson',
+    email: 'j.wilson@example.com',
+    role: 'Product Manager',
+    avatar: 'https://picsum.photos/seed/james/200',
+    status: 'active',
+    joinedDate: '2022-11-05',
+    department: 'Product',
+  },
+  {
+    id: '5',
+    name: 'Elena Kovač',
+    email: 'elena.k@example.com',
+    role: 'Frontend Developer',
+    avatar: 'https://picsum.photos/seed/elena/200',
+    status: 'active',
+    joinedDate: '2023-04-18',
+    department: 'Engineering',
+  },
+  {
+    id: '6',
+    name: 'David Kim',
+    email: 'david.kim@example.com',
+    role: 'DevOps Engineer',
+    avatar: 'https://picsum.photos/seed/david/200',
+    status: 'inactive',
+    joinedDate: '2023-01-30',
+    department: 'Engineering',
+  },
+  {
+    id: '7',
+    name: 'Sophie Laurent',
+    email: 'sophie.l@example.com',
+    role: 'Marketing Lead',
+    avatar: 'https://picsum.photos/seed/sophie/200',
+    status: 'active',
+    joinedDate: '2023-05-12',
+    department: 'Marketing',
+  },
+  {
+    id: '8',
+    name: 'Ahmed Hassan',
+    email: 'ahmed.h@example.com',
+    role: 'Backend Developer',
+    avatar: 'https://picsum.photos/seed/ahmed/200',
+    status: 'active',
+    joinedDate: '2023-02-28',
+    department: 'Engineering',
+  },
+  {
+    id: '9',
+    name: 'Lisa Anderson',
+    email: 'lisa.anderson@example.com',
+    role: 'HR Manager',
+    avatar: 'https://picsum.photos/seed/lisa/200',
+    status: 'active',
+    joinedDate: '2022-09-14',
+    department: 'Human Resources',
+  },
+  {
+    id: '10',
+    name: 'Raj Sharma',
+    email: 'raj.sharma@example.com',
+    role: 'Data Scientist',
+    avatar: 'https://picsum.photos/seed/raj/200',
+    status: 'pending',
+    joinedDate: '2023-06-01',
+    department: 'Data',
+  },
+  {
+    id: '11',
+    name: 'Maria Garcia',
+    email: 'maria.g@example.com',
+    role: 'Sales Director',
+    avatar: 'https://picsum.photos/seed/maria/200',
+    status: 'active',
+    joinedDate: '2022-10-20',
+    department: 'Sales',
+  },
+  {
+    id: '12',
+    name: 'Tom Anderson',
+    email: 'tom.a@example.com',
+    role: 'QA Engineer',
+    avatar: 'https://picsum.photos/seed/tom/200',
+    status: 'active',
+    joinedDate: '2023-03-15',
+    department: 'Engineering',
+  },
+];
