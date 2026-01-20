@@ -1,4 +1,3 @@
-import { parseAsArrayOf, parseAsString, useQueryState } from "nuqs";
 import * as React from "react";
 
 import { getColumns } from "@/components/members/members-columns";
@@ -8,37 +7,15 @@ import { useDataTable } from "@/hooks/use-data-table";
 import { mockMembers } from "@/data/members";
 
 export default function Members() {
-  const [name] = useQueryState("name", parseAsString.withDefault(""));
-  const [department] = useQueryState(
-    "department",
-    parseAsArrayOf(parseAsString).withDefault([])
-  );
-  const [status] = useQueryState(
-    "status",
-    parseAsArrayOf(parseAsString).withDefault([])
-  );
-
-  const filteredData = React.useMemo(() => {
-    return mockMembers.filter((member) => {
-      const matchesName =
-        name === "" ||
-        member.name.toLowerCase().includes(name.toLowerCase()) ||
-        member.email.toLowerCase().includes(name.toLowerCase());
-      const matchesDepartment =
-        department.length === 0 || department.includes(member.department);
-      const matchesStatus =
-        status.length === 0 || status.includes(member.status);
-
-      return matchesName && matchesDepartment && matchesStatus;
-    });
-  }, [name, department, status]);
-
   const columns = React.useMemo(() => getColumns(), []);
 
   const { table } = useDataTable({
-    data: filteredData,
+    data: mockMembers,
     columns,
-    pageCount: Math.ceil(filteredData.length / 10),
+    pageCount: Math.ceil(mockMembers.length / 10),
+    initialState: {
+      columnPinning: { right: ["actions"] },
+    },
     getRowId: (row) => row.id,
   });
 

@@ -1,0 +1,50 @@
+# Bolt Ignore Patterns
+# These patterns help reduce token usage by excluding non-essential paths
+
+# Documentation folder (large with many example files)
+docs/
+
+# Package folders (contain library source code)
+packages/
+
+# Node modules (dependencies)
+node_modules/
+
+# Build outputs
+dist/
+build/
+.next/
+.turbo/
+
+# Test files
+*.test.tsx
+*.test.ts
+**/__tests__/
+
+# Configuration files (unless needed)
+*.config.ts
+*.config.js
+*.config.cjs
+*.config.mjs
+
+# Lock files
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+
+# Git
+.git/
+.github/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Misc
+.changeset/
+*.md
+LICENSE
+CONTRIBUTING.md
+README.md

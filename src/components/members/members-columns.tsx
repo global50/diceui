@@ -1,5 +1,5 @@
 import type { ColumnDef } from "@tanstack/react-table";
-import { MoreHorizontal } from "lucide-react";
+import { Briefcase, CheckCircle, CheckCircle2, Clock, MoreHorizontal, Palette, ShoppingCart, Users, XCircle, Database } from "lucide-react";
 import * as React from "react";
 
 import { DataTableColumnHeader } from "@/components/data-table/data-table-column-header";
@@ -36,10 +36,12 @@ export function getColumns(): ColumnDef<Member>[] {
           aria-label="Select row"
         />
       ),
+      size: 32,
       enableSorting: false,
       enableHiding: false,
     },
     {
+      id: "name",
       accessorKey: "name",
       header: ({ column }) => (
         <DataTableColumnHeader column={column} label="Name" />
@@ -70,6 +72,7 @@ export function getColumns(): ColumnDef<Member>[] {
       enableColumnFilter: true,
     },
     {
+      id: "email",
       accessorKey: "email",
       header: ({ column }) => (
         <DataTableColumnHeader column={column} label="Email" />
@@ -85,6 +88,7 @@ export function getColumns(): ColumnDef<Member>[] {
       enableColumnFilter: true,
     },
     {
+      id: "department",
       accessorKey: "department",
       header: ({ column }) => (
         <DataTableColumnHeader column={column} label="Department" />
@@ -94,14 +98,15 @@ export function getColumns(): ColumnDef<Member>[] {
       },
       meta: {
         label: "Department",
+        variant: "multiSelect",
         options: [
-          { label: "Engineering", value: "Engineering" },
-          { label: "Design", value: "Design" },
-          { label: "Product", value: "Product" },
-          { label: "Marketing", value: "Marketing" },
-          { label: "Sales", value: "Sales" },
-          { label: "Human Resources", value: "Human Resources" },
-          { label: "Data", value: "Data" },
+          { label: "Engineering", value: "Engineering", icon: Briefcase },
+          { label: "Design", value: "Design", icon: Palette },
+          { label: "Product", value: "Product", icon: Briefcase },
+          { label: "Marketing", value: "Marketing", icon: ShoppingCart },
+          { label: "Sales", value: "Sales", icon: ShoppingCart },
+          { label: "Human Resources", value: "Human Resources", icon: Users },
+          { label: "Data", value: "Data", icon: Database },
         ],
       },
       filterFn: (row, id, value) => {
@@ -110,12 +115,15 @@ export function getColumns(): ColumnDef<Member>[] {
       enableColumnFilter: true,
     },
     {
+      id: "status",
       accessorKey: "status",
       header: ({ column }) => (
         <DataTableColumnHeader column={column} label="Status" />
       ),
       cell: ({ row }) => {
         const status = row.getValue("status") as string;
+        const Icon = status === "active" ? CheckCircle2 : status === "inactive" ? XCircle : Clock;
+
         return (
           <Badge
             variant="outline"
@@ -129,16 +137,18 @@ export function getColumns(): ColumnDef<Member>[] {
                 "bg-yellow-50 text-yellow-700 border-yellow-200 dark:bg-yellow-950 dark:text-yellow-400 dark:border-yellow-800"
             )}
           >
+            <Icon className="h-3 w-3" />
             {status.charAt(0).toUpperCase() + status.slice(1)}
           </Badge>
         );
       },
       meta: {
         label: "Status",
+        variant: "multiSelect",
         options: [
-          { label: "Active", value: "active" },
-          { label: "Inactive", value: "inactive" },
-          { label: "Pending", value: "pending" },
+          { label: "Active", value: "active", icon: CheckCircle },
+          { label: "Inactive", value: "inactive", icon: XCircle },
+          { label: "Pending", value: "pending", icon: Clock },
         ],
       },
       filterFn: (row, id, value) => {
@@ -165,7 +175,7 @@ export function getColumns(): ColumnDef<Member>[] {
         return (
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="icon-sm">
+              <Button variant="ghost" size="icon">
                 <MoreHorizontal className="h-4 w-4" />
                 <span className="sr-only">Open menu</span>
               </Button>
@@ -187,6 +197,7 @@ export function getColumns(): ColumnDef<Member>[] {
           </DropdownMenu>
         );
       },
+      size: 32,
     },
   ];
 }
